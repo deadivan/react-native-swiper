@@ -391,15 +391,21 @@ export default class extends Component {
    * @param  {object} offset content offset
    * @param  {string} dir    'x' || 'y'
    */
-  updateIndex = (offset, dir, cb) => {
-    const state = this.state
-    let index = state.index
-    const diff = offset[dir] - this.internals.offset[dir]
-    const step = dir === 'x' ? state.width : state.height
-    let loopJump = false
+  updateIndex = (offset={}, dir, cb) => {
+    const state = this.state;
+    let index = state.index ;
+    //修改 updateIndex 为空问题-2018-05-11 15:39:45-miles
+    if(offset&&offset[dir]){
+      const diff = offset[dir] - this.internals.offset[dir]
+      const step = dir === 'x' ? state.width : state.height
+      let loopJump = false
 
-    // Do nothing if offset no change.
-    if (!diff) return
+      // Do nothing if offset no change.
+      if (!diff) return
+    }else{
+      return
+    }
+
 
     // Note: if touch very very quickly and continuous,
     // the variation of `index` more than 1.
