@@ -394,9 +394,9 @@ export default class extends Component {
   updateIndex = (offset={}, dir, cb) => {
     const state = this.state;
     let index = state.index ;
-    const diff；
+    const diff;
     const step;
-    let loopJump
+    let loopJump;
 
     //修改 updateIndex 为空问题-2018-05-11 15:39:45-miles
     if(offset&&this.internals&&this.internals.offset){
